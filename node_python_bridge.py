@@ -68,10 +68,16 @@ def format_exception(t=None, e=None, tb=None):
 
 class JavaScriptEncoder(json.JSONEncoder):
     def default(self, o):
-        if math.isnan(o):
-            return 'NaN'
-        if math.isinf(o):
-            return 'Infinity' if o > 0 else '-Infinity'
+        try:
+            if math.isnan(o):
+                return 'NaN'
+            if math.isinf(o):
+                return 'Infinity' if o > 0 else '-Infinity'
+        except TypeError:
+            if hasattr(o, 'tolist'):
+                return o.tolist()
+            pass
+
         return o.__dict__
 
 
