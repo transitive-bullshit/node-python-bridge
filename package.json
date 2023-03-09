@@ -1,5 +1,5 @@
 {
-  "name": "python-bridge",
+  "name": "@fisch0920/python-bridge",
   "version": "1.1.0",
   "description": "Node.js to Python bridge ✨🐍🚀✨",
   "main": "index.js",
